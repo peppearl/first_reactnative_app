@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, Text, View} from 'react-native';
 
 export default function HomeScreen({navigation}) {
-    const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(true);
 
     useEffect(() => {
         fetch('https://pixel-makers.fr/mds/users.json')
