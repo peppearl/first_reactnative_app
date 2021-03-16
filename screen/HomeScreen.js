@@ -15,7 +15,7 @@ export default function HomeScreen({navigation}) {
           {key: 'Antoine'},
           {key: 'Alexandre'},
         ]}
-        renderItem={({item}) => <Text onPress={() => navigation.navigate('Detail')} style={styles.item}>{item.key}</Text>}
+        renderItem={({item}) => <Text onPress={() => navigation.navigate('Detail', { name: item.key })} style={styles.item}>{item.key}</Text>}
         />
       </View>
       )
