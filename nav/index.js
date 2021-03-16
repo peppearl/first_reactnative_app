@@ -13,7 +13,7 @@ export default function MainNavigator() {
             />
             <Stack.Screen name="Detail"
                           component={DetailScreen}
-                          options={({route}) => ({title: route.params.name})}
+                          options={({route}) => ({title: route.params.firstname})}
             />
         </Stack.Navigator>
     );

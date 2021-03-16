@@ -1,11 +1,20 @@
 import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View, Button, TextInput} from 'react-native';
+import {Alert, Modal, StyleSheet, Text, Pressable, View, TextInput, Image} from 'react-native';
 import {Formik} from 'formik';
 
 export default function DetailScreen({route}) {
     const [modalVisible, setModalVisible] = useState(false);
     return (
         <View style={styles.centeredView}>
+            <Image
+                style={styles.picture}
+                source={{
+                    uri: route.params.pic,
+                }}
+            />
+            <Text style={[styles.fullName, styles.TextStyle]}>{route.params.firstname} {route.params.lastname}</Text>
+            <Text style={[styles.ageUser, styles.TextStyle]}>{route.params.age}</Text>
+            <Text style={styles.textPadding10}>{route.params.mail}</Text>
             <Modal
                 animationType="slide"
                 transparent={true}
@@ -25,7 +34,7 @@ export default function DetailScreen({route}) {
                 style={[styles.button, styles.buttonOpen]}
                 onPress={() => setModalVisible(true)}
             >
-                <Text style={styles.textStyle}>Contactez {route.params.name}</Text>
+                <Text style={styles.textStyle}>Contactez {route.params.firstname}</Text>
             </Pressable>
         </View>
     )
@@ -43,7 +52,10 @@ export const MyReactNativeForm = props => (
                            onBlur={handleBlur('email')}
                            value={values.email}
                 />
-                <Button onPress={handleSubmit} title="Submit"/>
+                <Pressable
+                    style={[styles.button, styles.buttonOpen]} onPress={handleSubmit}><Text
+                    style={styles.textStyle}>Submit !</Text>
+                </Pressable>
                 <Text>{values.email ? (
                     <Text>Email is defined : {values.email}</Text>
                 ) : (
@@ -100,5 +112,25 @@ const styles = StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: "center"
+    },
+    picture: {
+        width: 100,
+        height: 100,
+        borderRadius: 100
+    },
+    TextStyle: {
+        textAlign: 'center',
+        padding: 10,
+        fontWeight: 'bold'
+    },
+    fullName: {
+        fontSize: 30
+    },
+    ageUser: {
+        fontSize: 20,
+        color: "#F194FF"
+    },
+    textPadding10: {
+        padding: 10
     }
 });
