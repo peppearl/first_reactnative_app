@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Alert, Modal, StyleSheet, Text, Pressable, View, TextInput, Image} from 'react-native';
-import {Formik} from 'formik';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import ContactUser from './../modals/ContactUser.js'
 
 export default function DetailScreen({route}) {
     const [modalVisible, setModalVisible] = useState(false);
@@ -15,56 +15,10 @@ export default function DetailScreen({route}) {
             <Text style={[styles.fullName, styles.TextStyle]}>{route.params.firstname} {route.params.lastname}</Text>
             <Text style={[styles.ageUser, styles.TextStyle]}>{route.params.age}</Text>
             <Text style={styles.textPadding10}>{route.params.mail}</Text>
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    Alert.alert("Modal has been closed.");
-                    setModalVisible(!modalVisible);
-                }}
-            >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-                        <MyReactNativeForm/>
-                    </View>
-                </View>
-            </Modal>
-            <Pressable
-                style={[styles.button, styles.buttonOpen]}
-                onPress={() => setModalVisible(true)}
-            >
-                <Text style={styles.textStyle}>Contactez {route.params.firstname}</Text>
-            </Pressable>
+            <ContactUser  setModalVisible={setModalVisible} modalVisible={modalVisible} route={route}/>
         </View>
     )
 }
-
-export const MyReactNativeForm = props => (
-    <Formik
-        initialValues={{email: ''}}
-        onSubmit={values => console.log(values)}
-    >
-        {({handleChange, handleBlur, handleSubmit, values}) => (
-            <View>
-                <TextInput style={styles.Input}
-                           onChangeText={handleChange('email')}
-                           onBlur={handleBlur('email')}
-                           value={values.email}
-                />
-                <Pressable
-                    style={[styles.button, styles.buttonOpen]} onPress={handleSubmit}><Text
-                    style={styles.textStyle}>Submit !</Text>
-                </Pressable>
-                <Text>{values.email ? (
-                    <Text>Email is defined : {values.email}</Text>
-                ) : (
-                    <Text>Email is not defined</Text>
-                )}</Text>
-            </View>
-        )}
-    </Formik>
-);
 
 const styles = StyleSheet.create({
     centeredView: {
