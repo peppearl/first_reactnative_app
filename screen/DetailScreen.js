@@ -39,9 +39,9 @@ export const MyReactNativeForm = props => (
         {({handleChange, handleBlur, handleSubmit, values}) => (
             <View>
                 <TextInput style={styles.Input}
-                    onChangeText={handleChange('email')}
-                    onBlur={handleBlur('email')}
-                    value={values.email}
+                           onChangeText={handleChange('email')}
+                           onBlur={handleBlur('email')}
+                           value={values.email}
                 />
                 <Button onPress={handleSubmit} title="Submit"/>
                 <Text>{values.email ? (
