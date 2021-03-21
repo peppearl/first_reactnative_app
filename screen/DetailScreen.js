@@ -13,7 +13,7 @@ export default function DetailScreen({route}) {
                 }}
             />
             <Text style={[styles.fullName, styles.TextStyle]}>{route.params.firstname} {route.params.lastname}</Text>
-            <Text style={[styles.ageUser, styles.TextStyle]}>{route.params.age}</Text>
+            <Text style={[styles.ageUser, styles.TextStyle]}>{route.params.age} ans</Text>
             <Text style={styles.textPadding10}>{route.params.mail}</Text>
             <ContactUser  setModalVisible={setModalVisible} modalVisible={modalVisible} route={route}/>
         </View>
