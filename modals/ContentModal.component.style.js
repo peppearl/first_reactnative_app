@@ -8,9 +8,9 @@ export default StyleSheet.create({
         marginTop: 22
     },
     Input: {
-        borderWidth: 2,
-        borderColor: "#000",
-        marginBottom: 10
+        flex: 1,
+        marginBottom: 10,
+        width: 230
     },
     modalView: {
         margin: 20,
@@ -33,7 +33,7 @@ export default StyleSheet.create({
         elevation: 2
     },
     buttonOpen: {
-        backgroundColor: "#F194FF",
+        backgroundColor: "#6200ee",
     },
     buttonClose: {
         backgroundColor: "#2196F3",
@@ -46,5 +46,12 @@ export default StyleSheet.create({
     modalText: {
         marginBottom: 15,
         textAlign: "center"
+    },
+    h2Style: {
+        fontWeight: "bold",
+        color: "#6200ee",
+        fontSize: 30,
+        textAlign: "center",
+        marginBottom: 25
     }
 });

@@ -1,29 +1,37 @@
 import React from 'react';
-import {Modal, StyleSheet, View} from 'react-native';
-
-//Scrollable Content
-//
-// React Native Modal supports scrollable content inside the modal box.
-// It supports Horizontal scroll too & it can be enabled by setting scrollHorizontal prop to true which is by
-// default false. By setting scrollOffset, content gets scrollable, and swipe to close gesture gets disabled.
+import {Modal, ScrollView, StyleSheet, TouchableOpacity, View} from 'react-native';
+import {Icon} from 'react-native-elements';
 
 export default function CustomModal({contentModal, setModalVisible, modalVisible}) {
-    return (
-        <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            onRequestClose={() => {
-                setModalVisible(!modalVisible);
-            }}
-        >
-            <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                    {contentModal}
+        return (
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={[styles.centeredView, modalVisible ? {backgroundColor: 'rgba(0,0,0,0.5)'} : '']}>
+                    <View style={styles.modalView}>
+                         <TouchableOpacity style={styles.iconClose}
+                                    onPress={() => {
+                                        setModalVisible(!modalVisible);
+                                    }}>
+                             <Icon
+                                 reverse
+                                 name='x'
+                                 type='feather'
+                                 color='#6200ee'
+                             />
+                             </TouchableOpacity>
+                        <ScrollView style={styles.scrollModal}>
+                            {contentModal}
+                        </ScrollView>
+                    </View>
                 </View>
-            </View>
-        </Modal>
-    )
+            </Modal>
+        )
 };
 
 const styles = StyleSheet.create({
@@ -31,13 +39,16 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 22
+        marginTop: 50,
     },
     modalView: {
-        margin: 20,
+        marginLeft: 30,
+        marginBottom: 50,
+        marginRight: 30,
+        paddingLeft: 35,
+        paddingRight: 35,
         backgroundColor: "white",
         borderRadius: 20,
-        padding: 35,
         alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
@@ -46,6 +57,18 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5
+        elevation: 5,
+        maxHeight:"80%"
+    },
+    iconClose: {
+        position: 'relative',
+        left: 150,
+        bottom: 35,
+    },
+    scrollModal: {
+        position: 'relative',
+        bottom: 35,
+        flexGrow: 0,
+        width: 235
     }
 });

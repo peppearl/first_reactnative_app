@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         elevation: 2
     },
     buttonOpen: {
-        backgroundColor: "#F194FF",
+        backgroundColor: "#6200ee",
     },
     buttonClose: {
         backgroundColor: "#2196F3",
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     },
     ageUser: {
         fontSize: 20,
-        color: "#F194FF"
+        color: "#6200ee"
     },
     textPadding10: {
         padding: 10
