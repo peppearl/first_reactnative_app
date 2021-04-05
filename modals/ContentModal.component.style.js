@@ -30,7 +30,8 @@ export default StyleSheet.create({
     button: {
         borderRadius: 20,
         padding: 10,
-        elevation: 2
+        elevation: 2,
+        width:"50%",
     },
     buttonOpen: {
         backgroundColor: "#6200ee",
@@ -53,5 +54,9 @@ export default StyleSheet.create({
         fontSize: 30,
         textAlign: "center",
         marginBottom: 25
+    },
+    alignView: {
+        flex: 1,
+        alignItems: "center"
     }
 });

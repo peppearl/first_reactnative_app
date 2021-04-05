@@ -16,7 +16,7 @@ export default function ContactUser({setModalVisible, modalVisible, route}) {
                     onSubmit={values => console.log(values)}
                 >
                     {({handleChange, handleBlur, handleSubmit, values}) => (
-                        <View>
+                        <View style={style.alignView}>
                             <Text h2
                                   style={style.h2Style}
                             >Formulaire de contact</Text>
@@ -60,9 +60,8 @@ export default function ContactUser({setModalVisible, modalVisible, route}) {
                                        onBlur={handleBlur('phone')}
                                        value={values.phone}
                             />
-                            <Pressable
-                                style={[style.button, style.buttonOpen]} onPress={handleSubmit}><Text
-                                style={style.textStyle}>Submit !</Text>
+                            <Pressable style={[style.button, style.buttonOpen]} onPress={handleSubmit}>
+                                <Text style={style.textStyle}>Submit !</Text>
                             </Pressable>
                         </View>
                     )}
