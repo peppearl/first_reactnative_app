@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import {Button, FlatList, Pressable, StyleSheet, Text, View} from 'react-native';
 
 export default function HomeScreen({navigation}) {
     const [data, setData] = useState(true);
@@ -13,9 +13,16 @@ export default function HomeScreen({navigation}) {
 
     return (
         <View>
+            <View>
+                <Pressable
+                    style={[styles.button, styles.buttonOpen]}
+                    onPress={() => navigation.navigate('Camera')}>
+                    <Text style={styles.textStyle}>Camera</Text>
+                </Pressable>
+            </View>
             <FlatList
                 data={data}
-                keyExtractor={({id}) => id}
+                keyExtractor={({id}) => "id" + id}
                 renderItem={({item}) => <Text onPress={() => navigation.navigate('Detail', {
                     firstname: item.firstName,
                     lastname: item.lastName,
@@ -41,5 +48,18 @@ const styles = StyleSheet.create({
         padding: 10,
         fontSize: 70,
         fontWeight: 'bold'
+    },
+    buttonOpen: {
+        backgroundColor: "#6200ee",
+    },
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
     },
 });
