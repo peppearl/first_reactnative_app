@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, Pressable, View} from 'react-native';
+import {StyleSheet, Text, Pressable, View, MediaLibrary} from 'react-native';
 import CustomModal from './../modals/CustomModal.js';
 import {Formik} from 'formik';
 import style from './../modals/ContentModal.component.style.js';
